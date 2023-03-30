@@ -16,7 +16,7 @@ internal class Program
 
             var items = JsonConvert.DeserializeObject<List<Dias>>(File.ReadAllText(json));
             
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].valor > maiorValor)
                 {
@@ -39,11 +39,11 @@ internal class Program
             Console.WriteLine("O menor valor de faturamento ocorrido em um dia do mês: Dia "+ menorDia +" - R$" + menorValor);
             Console.WriteLine("O maior valor de faturamento ocorrido em um dia do mês: Dia "+ maiorDia +" - R$" + maiorValor);
             Console.WriteLine("Dias acima da média: ");
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < items.Count; i++)
             {
                 if (media < items[i].valor)
                 {
-                    Console.WriteLine("Dia " +items[i].dia+ " - R$ " +items[i].valor);
+                    Console.WriteLine("Dia " + items[i].dia + " - R$ " + items[i].valor);
                 } 
             }
         }
