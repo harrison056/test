@@ -8,11 +8,10 @@ internal class Program
         string json = @"json/dados.json";
         if(File.Exists(json))
         {
-            int menorDia = 0, maiorDia = 0;
+            int menorDia = 0, maiorDia = 0, count = 0;
             double menorValor = 0, maiorValor = 0, media = 0;
             double soma = 0; //Soma da media
             int div = 0;//divisão de media
-            int[] acima = new int[29];
 
             var items = JsonConvert.DeserializeObject<List<Dias>>(File.ReadAllText(json));
             
@@ -38,14 +37,16 @@ internal class Program
 
             Console.WriteLine("O menor valor de faturamento ocorrido em um dia do mês: Dia "+ menorDia +" - R$" + menorValor);
             Console.WriteLine("O maior valor de faturamento ocorrido em um dia do mês: Dia "+ maiorDia +" - R$" + maiorValor);
-            Console.WriteLine("Dias acima da média: ");
+            Console.WriteLine("\nDias acima da média: \n");
             for (int i = 0; i < items.Count; i++)
             {
                 if (media < items[i].valor)
                 {
                     Console.WriteLine("Dia " + items[i].dia + " - R$ " + items[i].valor);
+                    count ++;
                 } 
             }
+            Console.WriteLine("\nTotal de " + count + " Dias!");
         }
     }
 
